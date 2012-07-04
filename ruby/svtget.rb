@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
-# SVTGet v0.7.0 in ruby
+# SVTGet v0.7.1 in ruby
 # Updates can be found at https://github.com/mmn/svtplay
 # Support the project with Flattr: https://flattr.com/thing/300374/SVT-Get-a-local-cache-tool-for-SVT-Play
 
@@ -86,8 +86,8 @@ if !ARGV[0].nil? && ARGV[0].match(/#{svtplayUrl}/)
   
   def getEpisodAndProgramName( html )
     title = (html/"[@data-title]").first['data-title']
-    episod = title[/^(.*)\s+-\s+/,1]
-    program = title[/\s+-\s+(.*)\s+\|/,1]
+    program = title[/^(.*)\s+-\s+/,1]
+    episod = title[/\s+-\s+(.*)\s+\|/,1]
     if ! ( episod && program )
       program =  title[/^(.*):\s+/,1]
       episod =  title[/:\s+(.*)\s+\|/,1]
