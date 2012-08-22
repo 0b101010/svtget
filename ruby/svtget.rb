@@ -91,9 +91,6 @@ if !ARGV[0].nil? && ARGV[0].match(/#{svtplayUrl}/)
     if ! ( episod && program )
       program =  title[/^(.*):\s+/,1]
       episod =  title[/:\s+(.*)\s+\|/,1]
-      if program =~ /^\d+\/\d+/
-	program = nil
-      end
     end
      if ! (episod || program)
       episod =  title[/^(.*)\s+\|/,1]
@@ -153,7 +150,7 @@ if !ARGV[0].nil? && ARGV[0].match(/#{svtplayUrl}/)
     extension = '.' + @options[:extension]
   end
   
-  baseFileName = "#{program} #{episod}".strip.tr(' ', '_')
+  baseFileName = "#{program} #{episod}".strip.tr(' ', '_').tr('/', '-')
   subtitlesUrl = subtitlesList.first['url'] unless subtitlesList.first.nil?
   
   def execCmd( cmd )
