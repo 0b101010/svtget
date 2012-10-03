@@ -41,7 +41,7 @@ svtplayUrl = "http://www.svtplay.se"
 # Available bitrates at svtplay
 bitrates = { 'l' => 340, 'm' => 850, 'n' => 1400, 'h' => 2400}
 
-@options = { :bitrate => 0, :silent => false, :subtitles => false, :debug => false, :app => 'rtmpdump', :xargs => '',  :extension => '' }
+@options = { :bitrate => -1, :silent => false, :subtitles => false, :debug => false, :app => 'rtmpdump', :xargs => '',  :extension => '' }
 
 # Options
 optparse = OptionParser.new do |opts|
@@ -136,8 +136,6 @@ if !ARGV[0].nil? && ARGV[0].match(/#{svtplayUrl}/)
   end
   
   case streams[index]["playerType"]
-  when 'ios'
-    url = streams[index]["url"].sub( %r{^[^:]+://},"applehttp://")
   when 'wmv'
     url = streams[index]["url"].sub( %r{^[^:]+://},"mmsh://")
   else
