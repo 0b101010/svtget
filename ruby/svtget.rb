@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
-# SVTGet v0.7.1 in ruby
+# SVTGet v0.7.4 in ruby
 # Updates can be found at https://github.com/mmn/svtplay
 # Support the project with Flattr: https://flattr.com/thing/300374/SVT-Get-a-local-cache-tool-for-SVT-Play
 
@@ -34,15 +34,15 @@ end
 
 dependencies = [ 'rtmpdump', 'curl', 'ffmpeg', 'ffplay' ]
 
-extensions = [ '.mkv', '.mp4', '.mp2', '.mpeg', '.mpg', '.avi', '.wmv', '.asf', '.flv', '.f4v', '.rm', '.3gp', '.3g2', '.mov', '.ogg' ]
-
-
 checkIfIntalled dependencies
 
 svtplayUrl = "http://www.svtplay.se"
 
 # Available bitrates at svtplay
 bitrates = { 'l' => 340, 'm' => 850, 'n' => 1400, 'h' => 2400}
+
+# Known extensions that is handled by ffmpeg.
+extensions = [ '.mkv', '.mp4', '.mp2', '.mpeg', '.mpg', '.avi', '.wmv', '.asf', '.flv', '.f4v', '.rm', '.3gp', '.3g2', '.mov', '.ogg' ]
 
 @options = { :bitrate => -1, :silent => false, :subtitles => false, :debug => false, :app => 'rtmpdump', :xargs => '',  :extension => '' }
 
