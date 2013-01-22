@@ -34,6 +34,9 @@ end
 
 dependencies = [ 'rtmpdump', 'curl', 'ffmpeg', 'ffplay' ]
 
+extensions = [ '.mkv', '.mp4', '.mp2', '.mpeg', '.mpg', '.avi', '.wmv', '.asf', '.flv', '.f4v', '.rm', '.3gp', '.3g2', '.mov', '.ogg' ]
+
+
 checkIfIntalled dependencies
 
 svtplayUrl = "http://www.svtplay.se"
@@ -143,7 +146,10 @@ if !ARGV[0].nil? && ARGV[0].match(/#{svtplayUrl}/)
   end
   
   if @options[:extension].empty?
-     extension = url[/\.[^\.]+$/]   
+     extension = url[/\.[^\.]+$/]
+     if ! extensions.include?(extension)
+       extension = extensions[0]
+     end
   else
     extension = '.' + @options[:extension]
   end
